@@ -1,0 +1,25 @@
+import json
+from dajaxice.decorators import dajaxice_register
+from django.contrib.auth.models import User, Group, Permission
+from Auth.models import Rol
+
+@dajaxice_register
+def get_rol(request,lista,proyecto_id):
+    usuarios=[]
+    for id in lista:        
+        usuario=User.objects.get(pk=id)
+        grupos= usuario.groups.all()
+                
+        if len(grupos)>0:
+            
+            for grupo in grupos:
+                data_perms=[]
+                permisos= Permission.objects.raw("select p.* from auth_group_permissions a join auth_permission p on p.id=a.permission_id where group_id="+str(grupo.id))
+                for p in permisos:
+                   data_perms.append(p.name)
+            data_group=[{'name':grupo.name,'permisos':data_perms}]
+            data_user={'user':usuario.username,'grupos':data_group}
+            usuarios.append(data_user)
+            
+    print usuarios
+    return json.dumps({'usuarios':usuarios})

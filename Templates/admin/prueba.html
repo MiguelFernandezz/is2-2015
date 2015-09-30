@@ -1,0 +1,61 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_modify suit_tags admin_urls %}
+{% load url from future %}
+
+{% block extrahead %}{{ block.super }}
+  {% url 'admin:jsi18n' as jsi18nurl %}
+  <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+
+  {{ media }}
+
+{% endblock %}
+
+
+{% block extrajs %}
+  {{ block.super }}
+
+
+ <script type="text/JavaScript">
+  function httpGet()
+  {
+    
+	var theUrl="http://clasipar.paraguay.com/buscar?utf8=%E2%9C%93&search=hilux&category=0"
+	//$("#url").val();
+		window.cbfunc = function(html) { 
+		var aux=html.results[0]
+		alert("holamundo");
+		$("#resultado").html(aux)
+		
+		//$("#contenido").html(document.getElementById("main").innerHTML)
+		
+		
+		};
+		$.getScript('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22' + 
+		encodeURIComponent(theUrl) + '%22&format=xml&diagnostics=true&callback=cbfunc');
+		
+		
+		
+  }
+
+  </script>
+
+{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Hola mundo </h1>
+<label for="url">Ingrese una URL</label>
+<input type="url" id="url" placeholder="URL" >
+<button class="btn btn-success" onclick="httpGet()">Get URL</button>
+<div id="contenido" >
+
+</div>
+<div id="resultado">
+
+</div>
+{% endblock %}

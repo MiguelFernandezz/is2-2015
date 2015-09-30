@@ -1,0 +1,350 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_modify suit_tags admin_urls %}
+{% load url from future %}
+{% load dajaxice_templatetags %}
+
+{% block extrahead %}{{ block.super }}
+  {% dajaxice_js_import %}
+  {% url 'admin:jsi18n' as jsi18nurl %}
+  <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+
+  {{ media }}
+
+{% endblock %}
+
+
+{% block extrajs %}
+  {{ block.super }}
+
+  {% if 'CONFIRM_UNSAVED_CHANGES'|suit_conf %}
+    <!-- Warn on leaving unsaved form -->
+    <script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
+    <script type="text/javascript">
+     //confirmExitIfModified('{{ opts.module_name }}_form', 'Tienes cambios que aun no se han guardado.');
+    </script>
+  {% endif %}
+
+  {% if adminform.model_admin.suit_form_tabs %}
+    <script type="text/javascript">
+    (function ($) {
+      $(function () {
+        $('#suit_form_tabs').suit_form_tabs();
+      });
+    }(Suit.$))
+    </script>
+  {% endif %}
+  
+        
+  <script>
+  function my_js_callback(data){
+   var longitud=data.usuarios.length;
+   var i;
+   var content="";
+   usuarios=data.usuarios
+   
+   for(i=0;i<longitud;i++){ 
+   		content+="<table class='table table-bordered table-striped'>";
+   	   	content+="<tr><th>Usuario: </th><td>"+usuarios[i].user+"</td></tr>"
+   		for(var j=0;j<usuarios[i].grupos.length; j++){ 
+   			content+="<tr><th>Rol:</th><td> "+usuarios[i].grupos[j].name+"</td></tr>"
+   			content+="<tr><th>Permisos:</th><td>"
+   			for(var k=0;k<usuarios[i].grupos[j].permisos.length; k++)
+   			     content+=usuarios[i].grupos[j].permisos[k]+", ";
+   			content+="</td></tr>"
+   		}
+   	content+="</table>"		
+   }
+   
+   
+   
+   $("#modal-body").html(content);
+    $("#mi-btn").click();
+}
+  function hola(){ 
+  	var select=document.getElementById('id_equipo_from');
+  	var lista=[];
+  	var x;
+  	 for (x=0;x<select.length;x++)
+         {
+            if (select[x].selected)
+            {
+             lista.push(select[x].value);
+             
+            }
+         }
+         
+         Dajaxice.Proyectos.get_rol(my_js_callback,{'lista':lista,'proyecto_id':{{ original.pk }}});
+  }
+    (function ($) {
+      $(function () {
+        $("#{{ opts.module_name }}_form").suit_form_debounce();
+        
+		  {% if request.GET.ver %}
+		   var elements=document.getElementsByTagName('input')
+		   
+		   for(var i=0;i<elements.length;i++){ 
+		   		if(elements[i].name != 'q') 
+		   		elements[i].disabled=true		   
+		   }
+		   
+		     var elements=document.getElementsByTagName('textarea')
+		   for(var i=0;i<elements.length;i++) 
+		   		elements[i].disabled=true		
+		   
+		   var elements=document.getElementsByTagName('select')
+		   for(var i=0;i<elements.length;i++) 
+		   		elements[i].disabled=true		
+		   
+		  {% endif %}
+		  var nuevo=document.createElement("div");
+		  nuevo.innerHTML="<a onclick='hola()'>Rol usuario seleccionado</a>"
+		var element = document.getElementsByClassName("control-label")[0];
+    	element.appendChild(nuevo);
+    	
+		  
+      });
+    }(Suit.$))    
+  </script>
+
+{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+{% endblock %}
+
+{% block content_title_value %}
+  {% trans 'Add' %} {{ opts.verbose_name }}
+{% endblock %}
+
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    <ul class="breadcrumb">
+      <li>
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        <span class="divider">&raquo;</span>
+      </li>
+      <li>
+        <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{% firstof opts.app_config.verbose_name app_label|capfirst|escape %}</a>
+        <span class="divider">&raquo;</span>
+      </li>
+      <li>
+        {% if has_change_permission %}
+          <a href="{% url opts|admin_urlname:'changelist' %}">
+            {{ opts.verbose_name_plural|capfirst }}</a>{% else %}
+          {{ opts.verbose_name_plural|capfirst }}{% endif %}
+        <span class="divider">&raquo;</span>
+      </li>
+      <li class="active">
+        {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+      </li>
+    </ul>
+  {% endblock %}
+{% endif %}
+
+{% block content %}
+
+{% if original %}
+  <div id="content-main" class="inner-two-columns">
+	{% if not request.GET.ver %}
+    <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post"
+          id="{{ opts.module_name }}_form" class="form-horizontal">
+
+      <div class="inner-right-column">
+
+        <div class="box save-box">
+		{% if not request.GET.ver %}
+			
+          {% block submit_buttons_bottom %}
+          	{% load i18n admin_urls %}
+          <div class="submit-row clearfix">
+				 
+				 {% if perms.proyecto.can_add_equipo %}
+					
+				  <button type="submit" class="btn btn-high btn-info" name="_save"> <i class="icon-check icon-white"></i> {% trans 'Save' %}</button>
+				  <button type="submit" name="_continue" class=" btn btn-high">  {% trans 'Save and continue editing' %}</button>
+				{% endif %}
+				  <a  href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-success" style="width: 80%"> 
+					  <i class="icon-chevron-left icon-white"></i>
+					  Volver</a>
+				</div>
+   
+          {% endblock %}
+        {% else %}
+        
+  
+  <a  href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-success" style="width: 80%"> 
+	  <i class="icon-chevron-left icon-white"></i>
+	  Volver</a>
+        {% endif %}
+		
+        </div>
+
+
+        {% block object-tools %}
+          {% if change %}{% if not is_popup %}
+            <h4 class="italic-title">Herramientas</h4>
+            <ul class="box menu-box">
+              {% block object-tools-items %}
+                <li><a href="history/" class="historylink"><i
+                    class="icon-time icon-alpha75"></i>{% trans "History" %}</a>
+                </li>
+                {% if has_absolute_url %}
+                  <li>
+                    <a href="{{ original.get_absolute_url }}" class="viewsitelink"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}</a>
+                  </li>
+                {% endif %}
+
+
+              {% endblock %}
+            </ul>
+          {% endif %}{% endif %}
+        {% endblock %}
+
+      {% block sidebar %}{% endblock %}
+
+      </div>
+      <div class="inner-center-column">
+      
+        {% csrf_token %}{% block form_top %}{% endblock %}
+        {% block suit_form_tabs %}
+          {% if adminform.model_admin.suit_form_tabs %}
+            <ul id="suit_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
+              {% for tab in adminform.model_admin.suit_form_tabs %}
+                <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}
+            </ul>
+          {% endif %}
+        {% endblock %}
+        <div class="tab-content tab-content-main">
+        	
+          {% if is_popup %}
+            <input type="hidden" name="_popup" value="1"/>{% endif %}
+          {% if errors %}
+            <div class="alert alert-error">
+              {% blocktrans count counter=errors|length %}Please correct the error below.{% plural %} Please correct the errors below.{% endblocktrans %}
+              {{ adminform.form.non_field_errors }}
+            </div>
+          {% endif %}
+
+          {# render suit_form_includes at top position #}
+          {% include 'suit/includes/change_form_includes.html' with position='top' %}
+			
+          {% block field_sets %}
+          
+            {% for fieldset in adminform %}
+              {% include "admin/includes/fieldset.html" %}
+
+            {% endfor %}
+          {% endblock %}
+
+          {% block after_field_sets %}{% endblock %}
+
+          {# render suit_form_includes at middle position #}
+          {% include 'suit/includes/change_form_includes.html' with position='middle' %}
+
+          {% block inline_field_sets %}
+            {% for inline_admin_formset in inline_admin_formsets %}
+              {% include inline_admin_formset.opts.template %}
+            {% endfor %}
+          {% endblock %}
+
+        </div>
+
+        {% block after_related_objects %}{% endblock %}
+
+        {# render suit_form_includes at last position #}
+        {% include 'suit/includes/change_form_includes.html' with position='bottom' %}
+
+        {% if adminform and add %}
+          <script type="text/javascript">
+            (function ($) {
+              $('form#{{ opts.module_name }}_form :input[type!=button][type!=submit]:visible:enabled:first').focus();
+            })(django.jQuery);
+          </script>
+        {% endif %}
+
+        {# JavaScript for prepopulated fields #}
+        {% prepopulated_fields_js %}
+
+      </div>
+    </form>
+    {% endif %}
+    
+    
+    
+    <h1>  Miembros del Equipo</h1>
+    {% if request.GET.ver %}
+     <div class="inner-right-column">
+
+        <div class="box save-box">
+		
+			
+          <div class="submit-row clearfix">
+    
+      <a  href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-success" style="width: 80%"> 
+					  <i class="icon-chevron-left icon-white"></i>
+					  Volver</a>
+		</div>
+		
+		</div>
+	</div>
+	{% endif %}
+    <table class="table table-stripped">
+    <thead>
+    <tr>
+    <td>Nombre</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for u in original.equipo.all %}
+      <tr>
+      <td>{{u.username}}</td>
+  
+      </tr>
+      {% endfor %}
+      </tbody>
+      </table>
+  </div>
+ 
+  
+  {% else %}
+  	<br><br>
+  	<center>
+  	<h3>Debe seleccionar un proyecto para agregar miembros al equipo.</h3>
+  	  <a  href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-success" style="width: 10%"> 
+					  <i class="icon-chevron-left icon-white"></i>
+					  Volver</a>
+					  </center>
+					  
+		{% endif %}
+	
+
+{% endblock %}
+
+{# Empty centered sidebar as now we use sidebar in content block#}
+{% block sidebar_content %}
+
+ <!-- Button trigger modal -->
+  <a data-toggle="modal" href="#myModal" id="mi-btn" style="display:none" class="btn btn-primary btn-lg">Launch demo modal</a>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="titulo">Datos de Usuario</h4>
+        </div>
+        <div class="modal-body" id="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button"  data-dismiss="modal" id="aceptar-btn" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+{% endblock %}
