@@ -1,0 +1,20 @@
+is2-2015 Taguato
+
+instalar
+
+sudo apt-get instal python-pip
+sudo pip install django==1.7.4
+sudo pip install django-suit
+sudo pip install django-dajax
+sudo apt-get install python-psycopg2
+
+crear base de datos en postgres con el nombre taguatoBD
+role postgres pass postgres
+
+borrar la capeta migrations
+
+sudo rm -R /usr/local/lib/python2.7/dist-packages/django/contrib/auth/migrations
+
+python manage.py syncdb (crear superusuario)
+python manage.py runserver
+entrar a http://127.0.0.1:8000/admin/
