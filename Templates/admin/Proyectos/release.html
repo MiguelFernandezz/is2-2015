@@ -1,0 +1,112 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_modify suit_tags admin_urls %}
+{% load url from future %}
+{% load extra_tags %}
+{% block title %}
+Release
+{% endblock %}
+{% block extrahead %}{{ block.super }}
+  {% url 'admin:jsi18n' as jsi18nurl %}
+  <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+ 
+
+<script src="/static/morris/morris.min.js"></script>
+ 
+
+  {{ media }}
+
+{% endblock %}
+
+
+{% block extrajs %}
+  {{ block.super }}
+
+{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+{% endblock %}
+
+{% block content_title_value %}
+   Burndown Chart | {{ sprint.nombre }}
+{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+
+
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    <ul class="breadcrumb">
+      <li>
+        <a href="/admin">Inicio</a>
+        <span class="divider">&raquo;</span>
+      </li>
+      <li>
+        <a href="/admin/Proyectos/proyecto">Proyectos</a>
+        <span class="divider">&raquo;</span>
+      </li>
+      <li>
+        <a href="/admin/Proyectos/proyecto/{{ proyecto.id }}">{{ proyecto.nombre }}</a>
+        <span class="divider">&raquo;</span>
+      </li>
+      <li>
+      Release
+      </li>
+      </ul>
+  {% endblock %}
+{% endif %}
+
+{% block content %}
+	<center>
+ 	<h1>Release - {{ proyecto.nombre }}</h1>
+ 	</center>
+ 	<div id="content-main" class="inner-two-columns">
+ 	  <div class="inner-right-column">
+
+        <div class="box save-box">
+		
+          <div class="submit-row clearfix">
+          
+         
+  <a  href="/admin/Proyectos/proyecto/" class="btn btn-success" style="width: 80%"> 
+	  <i class="icon-chevron-left icon-white"></i>
+	  Volver</a>
+          </div>
+          </div>
+          </div>
+ 	
+ 	
+ 	{% if userstories|length > 0 %}
+ 	<table class="table table-bordered table-condensed table-hover">
+ 	<thead>
+ 	<tr>
+ 	<th>Nombre</th><th>Descripcion</th><th>Tiempo Estimado</th><th>Tiempo Trabajado</th><th>Usuario</th>
+ 	</tr>
+ 	</thead>
+ 	
+ 	{% for us in userstories %}
+ 	<tr>
+ 	<td>{{us.nombreUS}}</td>
+ 	<td>{{ us.descripcion }}</td>
+ 	<td>{{ us.tiempo_estimado }}</td>
+ 	<td>{{ us.tiempo_trabajado }}</td>
+ 	<td>{{ us.usuario.username }}</td>
+ 	</tr>
+ 	{% endfor %}
+
+ 	</table>
+ 	{% else %}
+
+		 	<div class="alert alert-info" role="alert" style="width: 75%">
+		 	
+		  <h4>
+		  		No hay User Stories en este Release! Es probable que aún no haya terminado ningún Sprint
+		  		o que los UserStories pasaron al siguiente Sprint.
+		  		</h4>
+
+		</div>
+ 	
+ 	{% endif %}
+  </div>
+{% endblock %}

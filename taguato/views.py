@@ -48,25 +48,50 @@ def send_complex_message(password,username,correo):
     html=vector[0]+username+vector[1]
     vector=html.split("<li><b>Password:</b>")
     html=vector[0]+"<li><b>Password: </b>"+password+vector[1]
+    
+    return requests.post(
+            "https://api.mailgun.net/v2/sandbox2760868a83624ed587c6e3c7706503e3.mailgun.org/messages",
+            auth=("api", "key-5412aff4c4c60423be7566da641215c0"),
+            #files=[("attachment", open("mensaje_password.html")),],
+            data={"from": "taguato <soporte@taguato.com>",
+                  "to": correo,
+                  "subject": "Recuperacion de Password",
+                  "text": "Testing some Mailgun awesomness!",
+                  "html": html})
 
+
+def internet_on():
+    ''' En esta funcion se verifica la conexion a internet para poder enviar 
+        el correo con el password nuevo'''
+    print "comprobando conexion"
+    try:
+        response=urllib2.urlopen('http://74.125.228.100',timeout=3)
+        print response
+        return True
+    except urllib2.URLError as err: pass
+    return False
+
+def enviar_notificacion(asunto="Asunto",titulo1="Title",titulo2="Subtitle",mensaje="",username="",correo=""):
+    f = open(BASE_DIR+'/Templates/notificaciones/generico.html', 'r')
+    html=f.read()
+    vector=html.split("username")
+    html=vector[0]+username+vector[1]
+    vector=html.split("titulo1")
+    html=vector[0]+titulo1+vector[1]
+    
+    vector=html.split("titulo2")
+    html=vector[0]+titulo2+vector[1]
+    vector=html.split("mensaje")
+    html=vector[0]+mensaje+vector[1]
     return requests.post(
         "https://api.mailgun.net/v2/sandbox2760868a83624ed587c6e3c7706503e3.mailgun.org/messages",
         auth=("api", "key-5412aff4c4c60423be7566da641215c0"),
         #files=[("attachment", open("mensaje_password.html")),],
         data={"from": "taguato <soporte@taguato.com>",
               "to": correo,
-              "subject": "Recuperacion de Password",
-              "text": "Testing some Mailgun awesomness!",
-              "html": html})
-
-
-
-def internet_on():
-    ''' En esta funcion se verifica la conexion a internet para poder enviar 
-        el correo con el password nuevo'''
-    try:
-        response=urllib2.urlopen('http://74.125.228.100',timeout=3)
-        return True
-    except urllib2.URLError as err: pass
-    return False
- 
+              "subject": asunto,
+              "text": "",
+              "html": html},
+            #timeout=10
+            )
+        

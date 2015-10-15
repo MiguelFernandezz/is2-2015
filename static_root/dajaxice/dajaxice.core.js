@@ -9,8 +9,12 @@ var Dajaxice = {
     
     Proyectos: {
     
-    sayhello: function(callback_function, argv, custom_settings){
-        return Dajaxice.call('Proyectos.sayhello', 'POST', callback_function, argv, custom_settings);
+    get_rol: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('Proyectos.get_rol', 'POST', callback_function, argv, custom_settings);
+    },
+
+    get_actividades: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('Proyectos.get_actividades', 'POST', callback_function, argv, custom_settings);
     }
 
 

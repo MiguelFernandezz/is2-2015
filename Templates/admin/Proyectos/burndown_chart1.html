@@ -1,0 +1,112 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_modify suit_tags admin_urls %}
+{% load url from future %}
+{% load extra_tags %}
+{% block title %}Burndown Chart{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+	{% url 'admin:jsi18n' as jsi18nurl %}
+ 	<script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+	<link rel="stylesheet" href="/static/morris/morris.css">
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/morris/raphael-min.js"></script>
+	<script src="/static/morris/morris.min.js"></script>
+ 	{{ media }}
+{% endblock %}
+
+
+{% block extrajs %}{{ block.super }}{% endblock %}
+
+{% block extrastyle %}{{ block.super }}{% endblock %}
+
+{% block content_title_value %}
+   Burndown Chart | {{ sprint.nombre }}
+{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+
+
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    <ul class="breadcrumb">
+      <li>
+        <a href="/admin">Inicio</a>
+        <span class="divider">&raquo;</span>
+      </li>
+      <li>
+        <a href="/admin/Proyectos/sprint">Sprints</a>
+        <span class="divider">&raquo;</span>
+      </li>
+      <li>
+      Burndown Chart 1
+      </li>
+      </ul>
+  {% endblock %}
+{% endif %}
+
+{% block content %}
+	<center>
+ 	<h1>Burndown Chart 1 - {{ sprint.nombreSprint }}</h1>
+ 	</center>
+ 	
+ 	<div  id="myfirstchart" style="background-color: white;"  ></div>
+
+   	<script>
+   			var datos=[
+				   { fecha: '{{ sprint.fecha_inicio|date:"Y-m-d" }}', horas: {{ total_horas }}},
+				    {% for tl in timelines %}
+				    	{ fecha: '{{tl.fecha|date:"Y-m-d"}}', horas: {{ tl.horas_restantes_sprint }} },
+				    {% endfor %}
+				    //{ fecha: '{{sprint.fecha_fin|date:"Y-m-d"}}', horas: 0}
+				  ]
+   	
+   
+          	new Morris.Line({
+				  // ID of the element in which to draw the chart.
+				  element: 'myfirstchart',
+				  // Chart data records -- each entry in this array corresponds to a point on
+				  // the chart.
+				  data: datos,
+				  // The name of the data record attribute that contains x-values.
+				  xkey: 'fecha',
+				  // A list of names of data record attributes that contain y-values.
+				  ykeys: ['horas'],
+				  // Labels for the ykeys -- will be displayed when you hover over the
+				  // chart.
+				   labels: ['horas'],
+				   lineColors:['green','blue'],
+				   hoverCallback: function (index, options, content, row) {
+				   	var aux ='<div class="morris-hover-row-label">'+datos[index].fecha+'</div>'+ getUS(index);
+ 							 return aux;
+								}
+				  
+				});
+				
+				function getUS(index){
+				 var link="";
+				 var longitud={{ timelines|length }}+1;
+				 if(index==0){ 
+				 	link+='<div class="morris-hover-point" style="color: Blue">'+
+							 ' <b>Inicio:</b> {{ sprint.fecha_inicio }}	<br/>'+
+							' <b>Total horas:</b> {{ total_horas }}</div>';
+				 }
+				 if(index==longitud){ 
+				 	link+='<div class="morris-hover-point" style="color: Blue">'+
+							 ' <b>Fin:</b> {{ sprint.fecha_fin }}</div>';
+				 }
+					{% for tl in timelines %}
+						var loop={{ forloop.counter }};	
+						if (loop == index){ 
+							link+='<div class="morris-hover-point" style="color: blue">'+
+							' <b>Horas Trabajadas:</b> {{ tl.horas }}</div>';
+							link+='<div class="morris-hover-point" style="color: blue">'+
+							' <b>Horas Restantes:</b> {{ tl.horas_restantes_sprint }}</div>';
+						}
+					{% endfor %}
+
+					link+="";
+					return link
+				} 				          	
+				 </script>
+{% endblock %}

@@ -16,7 +16,7 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
     "django.core.context_processors.i18n",
- 'django.contrib.auth.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
@@ -53,6 +53,10 @@ SUIT_CONFIG = {
 }
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_URL = '/media/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -64,15 +68,20 @@ SECRET_KEY = '-^_c=dq)1!kq0e%fr$67rxy^kr)krsfdk@1wzyst!*(u3rsb_p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 TEMPLATE_DIRS = (BASE_DIR+"/Templates",)
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+
 STATIC_ROOT= BASE_DIR+'/static_root'
 
+ALLOWED_HOSTS = [
+  '127.0.0.1', 'localhost',
+]
 
-ALLOWED_HOSTS = []
-
+CRONJOBS = [
+    ('*/1 * * * *', 'taguato.Proyectos.cron.controlar_sprints')
+]
 
 # Application definition
 
@@ -86,7 +95,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'Auth',
     'Proyectos',
-    'dajaxice'
+    'dajaxice',
 )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -145,3 +154,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+DEFAULT_FILE_STORAGE = 'db_file_storage.storage.DatabaseFileStorage'

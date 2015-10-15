@@ -156,24 +156,10 @@
       <div class="inner-right-column">
 
         <div class="box save-box">
-		{% if not request.GET.ver %}
-			
-          {% block submit_buttons_bottom %}
-          	{% load i18n admin_urls %}
-          <div class="submit-row clearfix">
-				 
-				 {% if perms.proyecto.can_add_equipo %}
-					
-				  <button type="submit" class="btn btn-high btn-info" name="_save"> <i class="icon-check icon-white"></i> {% trans 'Save' %}</button>
-				  <button type="submit" name="_continue" class=" btn btn-high">  {% trans 'Save and continue editing' %}</button>
-				{% endif %}
-				  <a  href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-success" style="width: 80%"> 
-					  <i class="icon-chevron-left icon-white"></i>
-					  Volver</a>
-				</div>
-   
-          {% endblock %}
+			{% if not request.GET.ver %}
+          {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
         {% else %}
+        
         
   
   <a  href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-success" style="width: 80%"> 

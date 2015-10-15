@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Proyectos.forms</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Proyectos-module.html">Package&nbsp;Proyectos</a> ::
+        Module&nbsp;forms
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Proyectos.forms-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Proyectos.forms-module.html">Module Proyectos.forms</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*- </tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module Auth.forms=Auth.forms-module.html,Module Proyectos.forms=Proyectos.forms-module.html"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-0', 'forms', 'link-0');">forms</a></tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt><tt class="py-op">.</tt><tt class="py-name">auth</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module Auth.models=Auth.models-module.html,Module Proyectos.models=Proyectos.models-module.html"><a title="Auth.models
+Proyectos.models" class="py-name" href="#" onclick="return doclink('link-1', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">User</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module Auth.admin=Auth.admin-module.html,Module Proyectos.admin=Proyectos.admin-module.html"><a title="Auth.admin
+Proyectos.admin" class="py-name" href="#" onclick="return doclink('link-2', 'admin', 'link-2');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">widgets</tt> <tt class="py-keyword">import</tt> <tt class="py-name">FilteredSelectMultiple</tt><tt class="py-op">,</tt>\ </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">    <tt class="py-name">AdminSplitDateTime</tt><tt class="py-op">,</tt> <tt class="py-name">AdminDateWidget</tt><tt class="py-op">,</tt> <tt class="py-name">AdminTimeWidget</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Package Proyectos=Proyectos-module.html"><a title="Proyectos" class="py-name" href="#" onclick="return doclink('link-3', 'Proyectos', 'link-3');">Proyectos</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="Auth.models
+Proyectos.models" class="py-name" href="#" onclick="return doclink('link-4', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Class Proyectos.models.Proyecto=Proyectos.models.Proyecto-class.html"><a title="Proyectos.models.Proyecto" class="py-name" href="#" onclick="return doclink('link-5', 'Proyecto', 'link-5');">Proyecto</a></tt><tt class="py-op">,</tt> <tt id="link-6" class="py-name" targets="Class Proyectos.models.Flujo=Proyectos.models.Flujo-class.html"><a title="Proyectos.models.Flujo" class="py-name" href="#" onclick="return doclink('link-6', 'Flujo', 'link-6');">Flujo</a></tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name" targets="Class Proyectos.models.Actividad=Proyectos.models.Actividad-class.html"><a title="Proyectos.models.Actividad" class="py-name" href="#" onclick="return doclink('link-7', 'Actividad', 'link-7');">Actividad</a></tt><tt class="py-op">,</tt> <tt id="link-8" class="py-name" targets="Class Proyectos.models.Comentario=Proyectos.models.Comentario-class.html"><a title="Proyectos.models.Comentario" class="py-name" href="#" onclick="return doclink('link-8', 'Comentario', 'link-8');">Comentario</a></tt><tt class="py-op">,</tt> <tt id="link-9" class="py-name" targets="Class Proyectos.models.UserStory=Proyectos.models.UserStory-class.html"><a title="Proyectos.models.UserStory" class="py-name" href="#" onclick="return doclink('link-9', 'UserStory', 'link-9');">UserStory</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="Auth.admin
+Proyectos.admin" class="py-name" href="#" onclick="return doclink('link-10', 'admin', 'link-2');">admin</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">widgets</tt>   </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">utils</tt><tt class="py-op">.</tt><tt class="py-name">timezone</tt> <tt class="py-keyword">import</tt> <tt class="py-name">now</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">utils</tt><tt class="py-op">.</tt><tt class="py-name">html</tt> <tt class="py-keyword">import</tt> <tt class="py-name">escape</tt><tt class="py-op">,</tt> <tt class="py-name">format_html</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Module Proyectos.views=Proyectos.views-module.html,Module taguato.views=taguato.views-module.html"><a title="Proyectos.views
+taguato.views" class="py-name" href="#" onclick="return doclink('link-11', 'views', 'link-11');">views</a></tt><tt class="py-op">.</tt><tt class="py-name">generic</tt><tt class="py-op">.</tt><tt class="py-name">dates</tt> <tt class="py-keyword">import</tt> <tt class="py-name">timezone_today</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-12', 'forms', 'link-0');">forms</a></tt><tt class="py-op">.</tt><tt class="py-name">formsets</tt> <tt class="py-keyword">import</tt> <tt class="py-name">formset_factory</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-13', 'forms', 'link-0');">forms</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="Auth.models
+Proyectos.models" class="py-name" href="#" onclick="return doclink('link-14', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">BaseInlineFormSet</tt><tt class="py-op">,</tt> <tt class="py-name">inlineformset_factory</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-15', 'forms', 'link-0');">forms</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Variable Proyectos.admin.EquipoAdmin.fields=Proyectos.admin.EquipoAdmin-class.html#fields,Variable Proyectos.forms.ComentarioForm.Meta.fields=Proyectos.forms.ComentarioForm.Meta-class.html#fields,Variable django.contrib.auth.forms.UserChangeForm.Meta.fields=django.contrib.auth.forms.UserChangeForm.Meta-class.html#fields"><a title="Proyectos.admin.EquipoAdmin.fields
+Proyectos.forms.ComentarioForm.Meta.fields
+django.contrib.auth.forms.UserChangeForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-16', 'fields', 'link-16');">fields</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">SplitDateTimeField</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-17', 'forms', 'link-0');">forms</a></tt><tt class="py-op">.</tt><tt class="py-name">widgets</tt> <tt class="py-keyword">import</tt> <tt class="py-name">SplitDateTimeWidget</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="EquipoForm"></a><div id="EquipoForm-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="EquipoForm-toggle" onclick="return toggle('EquipoForm');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Proyectos.forms.EquipoForm-class.html">EquipoForm</a><tt class="py-op">(</tt><tt class="py-base-class">forms</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelForm</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EquipoForm-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="EquipoForm-expanded"><a name="EquipoForm.Meta"></a><div id="EquipoForm.Meta-def"><a name="L17"></a><tt class="py-lineno">17</tt> <a class="py-toggle" href="#" id="EquipoForm.Meta-toggle" onclick="return toggle('EquipoForm.Meta');">-</a><tt class="py-line">    <tt class="py-keyword">class</tt> <a class="py-def-name" href="Proyectos.forms.EquipoForm.Meta-class.html">Meta</a><tt class="py-op">:</tt> </tt>
+</div><div id="EquipoForm.Meta-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="EquipoForm.Meta-expanded"><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt id="link-18" class="py-name" targets="Variable Auth.forms.RolForm.Meta.model=Auth.forms.RolForm.Meta-class.html#model,Variable Proyectos.admin.ActividadInLineFlujo.model=Proyectos.admin.ActividadInLineFlujo-class.html#model,Variable Proyectos.admin.ComentarioInLineUserstory.model=Proyectos.admin.ComentarioInLineUserstory-class.html#model,Variable Proyectos.admin.userstoryInLineFlujo.model=Proyectos.admin.userstoryInLineFlujo-class.html#model,Variable Proyectos.admin.userstoryInLineSprint.model=Proyectos.admin.userstoryInLineSprint-class.html#model,Variable Proyectos.forms.ComentarioForm.Meta.model=Proyectos.forms.ComentarioForm.Meta-class.html#model,Variable Proyectos.forms.EquipoForm.Meta.model=Proyectos.forms.EquipoForm.Meta-class.html#model,Variable Proyectos.forms.FlujoForm.Meta.model=Proyectos.forms.FlujoForm.Meta-class.html#model,Variable django.contrib.auth.forms.UserChangeForm.Meta.model=django.contrib.auth.forms.UserChangeForm.Meta-class.html#model"><a title="Auth.forms.RolForm.Meta.model
+Proyectos.admin.ActividadInLineFlujo.model
+Proyectos.admin.ComentarioInLineUserstory.model
+Proyectos.admin.userstoryInLineFlujo.model
+Proyectos.admin.userstoryInLineSprint.model
+Proyectos.forms.ComentarioForm.Meta.model
+Proyectos.forms.EquipoForm.Meta.model
+Proyectos.forms.FlujoForm.Meta.model
+django.contrib.auth.forms.UserChangeForm.Meta.model" class="py-name" href="#" onclick="return doclink('link-18', 'model', 'link-18');">model</a></tt><tt class="py-op">=</tt><tt id="link-19" class="py-name"><a title="Proyectos.models.Proyecto" class="py-name" href="#" onclick="return doclink('link-19', 'Proyecto', 'link-5');">Proyecto</a></tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt id="link-20" class="py-name" targets="Variable Proyectos.forms.EquipoForm.equipo=Proyectos.forms.EquipoForm-class.html#equipo,Variable Proyectos.models.Proyecto.equipo=Proyectos.models.Proyecto-class.html#equipo"><a title="Proyectos.forms.EquipoForm.equipo
+Proyectos.models.Proyecto.equipo" class="py-name" href="#" onclick="return doclink('link-20', 'equipo', 'link-20');">equipo</a></tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-21', 'forms', 'link-0');">forms</a></tt><tt class="py-op">.</tt><tt class="py-name">ModelMultipleChoiceField</tt><tt class="py-op">(</tt><tt class="py-name">queryset</tt><tt class="py-op">=</tt><tt class="py-name">User</tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">is_active</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">                                          <tt class="py-name">label</tt><tt class="py-op">=</tt><tt class="py-string">'A&#241;adir Usuarios al Equipo'</tt><tt class="py-op">,</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">                                          <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">                                          <tt class="py-name">widget</tt><tt class="py-op">=</tt><tt class="py-name">FilteredSelectMultiple</tt><tt class="py-op">(</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">                                                    <tt class="py-string">'Usuarios'</tt><tt class="py-op">,</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">                                                    <tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">                                                 <tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">     </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">     </tt>
+<a name="FlujoForm"></a><div id="FlujoForm-def"><a name="L28"></a><tt class="py-lineno">28</tt> <a class="py-toggle" href="#" id="FlujoForm-toggle" onclick="return toggle('FlujoForm');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Proyectos.forms.FlujoForm-class.html">FlujoForm</a><tt class="py-op">(</tt><tt class="py-base-class">forms</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelForm</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FlujoForm-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="FlujoForm-expanded"><a name="FlujoForm.Meta"></a><div id="FlujoForm.Meta-def"><a name="L29"></a><tt class="py-lineno">29</tt> <a class="py-toggle" href="#" id="FlujoForm.Meta-toggle" onclick="return toggle('FlujoForm.Meta');">-</a><tt class="py-line">    <tt class="py-keyword">class</tt> <a class="py-def-name" href="Proyectos.forms.FlujoForm.Meta-class.html">Meta</a><tt class="py-op">:</tt> </tt>
+</div><div id="FlujoForm.Meta-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="FlujoForm.Meta-expanded"><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt id="link-22" class="py-name"><a title="Auth.forms.RolForm.Meta.model
+Proyectos.admin.ActividadInLineFlujo.model
+Proyectos.admin.ComentarioInLineUserstory.model
+Proyectos.admin.userstoryInLineFlujo.model
+Proyectos.admin.userstoryInLineSprint.model
+Proyectos.forms.ComentarioForm.Meta.model
+Proyectos.forms.EquipoForm.Meta.model
+Proyectos.forms.FlujoForm.Meta.model
+django.contrib.auth.forms.UserChangeForm.Meta.model" class="py-name" href="#" onclick="return doclink('link-22', 'model', 'link-18');">model</a></tt><tt class="py-op">=</tt><tt id="link-23" class="py-name"><a title="Proyectos.models.Flujo" class="py-name" href="#" onclick="return doclink('link-23', 'Flujo', 'link-6');">Flujo</a></tt> </tt>
+</div><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt id="link-24" class="py-name" targets="Variable Auth.forms.RolForm.proyecto=Auth.forms.RolForm-class.html#proyecto,Variable Auth.models.Rol.proyecto=Auth.models.Rol-class.html#proyecto,Variable Proyectos.forms.FlujoForm.proyecto=Proyectos.forms.FlujoForm-class.html#proyecto,Variable Proyectos.models.Flujo.proyecto=Proyectos.models.Flujo-class.html#proyecto,Variable Proyectos.models.Sprint.proyecto=Proyectos.models.Sprint-class.html#proyecto,Variable Proyectos.models.UserStory.proyecto=Proyectos.models.UserStory-class.html#proyecto"><a title="Auth.forms.RolForm.proyecto
+Auth.models.Rol.proyecto
+Proyectos.forms.FlujoForm.proyecto
+Proyectos.models.Flujo.proyecto
+Proyectos.models.Sprint.proyecto
+Proyectos.models.UserStory.proyecto" class="py-name" href="#" onclick="return doclink('link-24', 'proyecto', 'link-24');">proyecto</a></tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-25', 'forms', 'link-0');">forms</a></tt><tt class="py-op">.</tt><tt class="py-name">ModelChoiceField</tt><tt class="py-op">(</tt><tt class="py-name">queryset</tt><tt class="py-op">=</tt><tt id="link-26" class="py-name"><a title="Proyectos.models.Proyecto" class="py-name" href="#" onclick="return doclink('link-26', 'Proyecto', 'link-5');">Proyecto</a></tt><tt class="py-op">.</tt><tt class="py-name">objects</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">     </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
+<a name="ComentarioForm"></a><div id="ComentarioForm-def"><a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="ComentarioForm-toggle" onclick="return toggle('ComentarioForm');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Proyectos.forms.ComentarioForm-class.html">ComentarioForm</a><tt class="py-op">(</tt><tt class="py-base-class">forms</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelForm</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ComentarioForm-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="ComentarioForm-expanded"><a name="ComentarioForm.Meta"></a><div id="ComentarioForm.Meta-def"><a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="ComentarioForm.Meta-toggle" onclick="return toggle('ComentarioForm.Meta');">-</a><tt class="py-line">    <tt class="py-keyword">class</tt> <a class="py-def-name" href="Proyectos.forms.ComentarioForm.Meta-class.html">Meta</a><tt class="py-op">:</tt> </tt>
+</div><div id="ComentarioForm.Meta-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ComentarioForm.Meta-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt id="link-27" class="py-name"><a title="Auth.forms.RolForm.Meta.model
+Proyectos.admin.ActividadInLineFlujo.model
+Proyectos.admin.ComentarioInLineUserstory.model
+Proyectos.admin.userstoryInLineFlujo.model
+Proyectos.admin.userstoryInLineSprint.model
+Proyectos.forms.ComentarioForm.Meta.model
+Proyectos.forms.EquipoForm.Meta.model
+Proyectos.forms.FlujoForm.Meta.model
+django.contrib.auth.forms.UserChangeForm.Meta.model" class="py-name" href="#" onclick="return doclink('link-27', 'model', 'link-18');">model</a></tt><tt class="py-op">=</tt><tt id="link-28" class="py-name"><a title="Proyectos.models.Comentario" class="py-name" href="#" onclick="return doclink('link-28', 'Comentario', 'link-8');">Comentario</a></tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt id="link-29" class="py-name"><a title="Proyectos.admin.EquipoAdmin.fields
+Proyectos.forms.ComentarioForm.Meta.fields
+django.contrib.auth.forms.UserChangeForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-29', 'fields', 'link-16');">fields</a></tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-string">'texto'</tt><tt class="py-op">,</tt><tt class="py-string">'fecha'</tt><tt class="py-op">,</tt><tt class="py-string">'username'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt id="link-30" class="py-name" targets="Variable Proyectos.forms.ComentarioForm.texto=Proyectos.forms.ComentarioForm-class.html#texto,Variable Proyectos.models.Comentario.texto=Proyectos.models.Comentario-class.html#texto"><a title="Proyectos.forms.ComentarioForm.texto
+Proyectos.models.Comentario.texto" class="py-name" href="#" onclick="return doclink('link-30', 'texto', 'link-30');">texto</a></tt><tt class="py-op">=</tt><tt id="link-31" class="py-name"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-31', 'forms', 'link-0');">forms</a></tt><tt class="py-op">.</tt><tt class="py-name">CharField</tt><tt class="py-op">(</tt><tt class="py-name">widget</tt><tt class="py-op">=</tt><tt id="link-32" class="py-name"><a title="Auth.forms
+Proyectos.forms" class="py-name" href="#" onclick="return doclink('link-32', 'forms', 'link-0');">forms</a></tt><tt class="py-op">.</tt><tt class="py-name">Textarea</tt><tt class="py-op">(</tt><tt class="py-name">attrs</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'rows'</tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-string">'style'</tt><tt class="py-op">:</tt><tt class="py-string">'width: 400px'</tt><tt class="py-op">,</tt><tt class="py-string">'class'</tt><tt class="py-op">:</tt><tt class="py-string">'textarea'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">label</tt><tt class="py-op">=</tt><tt class="py-string">"texto"</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt id="link-33" class="py-name" targets="Variable Proyectos.forms.ComentarioForm.fecha=Proyectos.forms.ComentarioForm-class.html#fecha,Variable Proyectos.models.Comentario.fecha=Proyectos.models.Comentario-class.html#fecha"><a title="Proyectos.forms.ComentarioForm.fecha
+Proyectos.models.Comentario.fecha" class="py-name" href="#" onclick="return doclink('link-33', 'fecha', 'link-33');">fecha</a></tt><tt class="py-op">=</tt><tt class="py-name">SplitDateTimeField</tt><tt class="py-op">(</tt><tt class="py-name">widget</tt><tt class="py-op">=</tt><tt class="py-name">SplitDateTimeWidget</tt><tt class="py-op">(</tt><tt class="py-name">attrs</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'style'</tt><tt class="py-op">:</tt><tt class="py-string">'width: 80px; text-align: center'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">label</tt><tt class="py-op">=</tt><tt class="py-string">"fecha y Hora"</tt><tt class="py-op">,</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">     </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">     </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">     </tt>
+<a name="ComentarioForm.__init__"></a><div id="ComentarioForm.__init__-def"><a name="L46"></a><tt class="py-lineno">46</tt> <a class="py-toggle" href="#" id="ComentarioForm.__init__-toggle" onclick="return toggle('ComentarioForm.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Proyectos.forms.ComentarioForm-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kwargs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ComentarioForm.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ComentarioForm.__init__-expanded"><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-34" class="py-name" targets="Class Proyectos.forms.ComentarioForm=Proyectos.forms.ComentarioForm-class.html"><a title="Proyectos.forms.ComentarioForm" class="py-name" href="#" onclick="return doclink('link-34', 'ComentarioForm', 'link-34');">ComentarioForm</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Method Proyectos.forms.ComentarioForm.__init__()=Proyectos.forms.ComentarioForm-class.html#__init__"><a title="Proyectos.forms.ComentarioForm.__init__" class="py-name" href="#" onclick="return doclink('link-35', '__init__', 'link-35');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">kwargs</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="Proyectos.admin.EquipoAdmin.fields
+Proyectos.forms.ComentarioForm.Meta.fields
+django.contrib.auth.forms.UserChangeForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-36', 'fields', 'link-16');">fields</a></tt><tt class="py-op">[</tt><tt class="py-string">'fecha'</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">widget</tt><tt class="py-op">.</tt><tt class="py-name">attrs</tt><tt class="py-op">[</tt><tt class="py-string">'readonly'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'readonly'</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="Proyectos.admin.EquipoAdmin.fields
+Proyectos.forms.ComentarioForm.Meta.fields
+django.contrib.auth.forms.UserChangeForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-37', 'fields', 'link-16');">fields</a></tt><tt class="py-op">[</tt><tt class="py-string">'fecha'</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">value</tt><tt class="py-op">=</tt><tt class="py-name">now</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="Proyectos.admin.EquipoAdmin.fields
+Proyectos.forms.ComentarioForm.Meta.fields
+django.contrib.auth.forms.UserChangeForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-38', 'fields', 'link-16');">fields</a></tt><tt class="py-op">[</tt><tt class="py-string">'username'</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">widget</tt><tt class="py-op">.</tt><tt class="py-name">attrs</tt><tt class="py-op">[</tt><tt class="py-string">'readonly'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'readonly'</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="Proyectos.admin.EquipoAdmin.fields
+Proyectos.forms.ComentarioForm.Meta.fields
+django.contrib.auth.forms.UserChangeForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-39', 'fields', 'link-16');">fields</a></tt><tt class="py-op">[</tt><tt class="py-string">'username'</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">widget</tt><tt class="py-op">.</tt><tt class="py-name">attrs</tt><tt class="py-op">[</tt><tt class="py-string">'class'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'username'</tt> </tt>
+</div></div><a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri May  1 21:31:22 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

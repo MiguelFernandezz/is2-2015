@@ -1,0 +1,16 @@
+
+Alias /static/ /var/www/taguato/static_root/
+
+<Directory /home/juanber/git/taguato/static>
+Require all granted
+</Directory>
+
+WSGIScriptAlias / /var/www/taguato/taguato/wsgi.py
+WSGIPythonPath /var/www/taguato
+WSGIRestrictStdout off
+
+<Directory /var/www/taguato/taguato>
+<Files wsgi.py>
+Require all granted
+</Files>
+</Directory>

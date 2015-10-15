@@ -8,7 +8,10 @@ from django.contrib.auth.forms import UserChangeForm
 #from apt_offline_core.AptOfflineCoreLib import app_name
 from Auth.models import Usuario, Rol
 from Auth.forms import RolForm, UsuarioForm
+from taguato.views import enviar_notificacion
 
+def subfinder(lista, sublista):
+        return list(filter(lambda x: x not in sublista, lista))
  
 class UsuarioAdmin(UserAdmin):
     '''Clase que admnistra usuarios (ABM) (listado de usuarios).
@@ -32,6 +35,34 @@ class UsuarioAdmin(UserAdmin):
     accion.allow_tags = True
     accion.short_description = 'Accion'
     
+    
+    
+    def save_model(self, request, obj, form, change):
+        if change:
+            antes= obj.groups.all()
+            ahora=form.cleaned_data.get('groups')
+            desasignados= subfinder(antes, ahora)
+            asignados=subfinder(ahora, antes)
+            enviar=True
+            asig= ["<li>"+str(x)+"</li>" for x in asignados]
+            desasig=["<li>"+str(x)+"</li>" for x in desasignados]
+            mensaje="Le informamos que hubo una accion que afecto uno o mas roles."
+            titulo1="Roles."
+            if desasignados:
+                mensaje+="<br>Tiene Roles desasignados.<br>"
+                for a in desasig:
+                    mensaje+=a
+            if asignados:
+                mensaje+="<br>Tiene Roles asignados.<br>"
+                for a in asig:
+                    mensaje+=a
+            enviar=len(asignados)!=0 or len(desasignados)!=0
+            if enviar:
+                enviar_notificacion(asunto="Rol", titulo1=titulo1, titulo2=titulo1,
+                     mensaje=mensaje, username=obj.username, correo=obj.email)
+        
+        obj.save()
+        
 
         
 admin.site.unregister(User)
@@ -56,7 +87,7 @@ class RolAdmin(GroupAdmin):
     
 
   
-    
+            
   
 
 admin.site.unregister(Group)

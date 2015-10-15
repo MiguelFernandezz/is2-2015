@@ -7,7 +7,9 @@ class Usuario(User):
     class Meta:
         proxy=True
         app_label = 'auth'
+    
 
+        
 class Rol(Group):
     '''clase Rol que hereda todos los atributos y metodos del la clase Group de django'''
     class Meta:

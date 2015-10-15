@@ -21,7 +21,6 @@ class UsuarioForm(UserChangeForm):
                 lst2.append(key)
             else:
                 repetidos+=key.nombre+", "
-                
             
         if repetidos !="":
             raise forms.ValidationError("Esta intentando asignar mas de un rol en un mismo Proyecto!")
@@ -32,5 +31,6 @@ class UsuarioForm(UserChangeForm):
 class RolForm(forms.ModelForm):
     class Meta:
         model=Rol
+        exclude=[]
     proyecto = forms.ModelChoiceField(queryset=Proyecto.objects.all())
                                                 

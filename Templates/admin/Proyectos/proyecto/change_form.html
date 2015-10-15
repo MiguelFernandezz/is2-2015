@@ -7,6 +7,7 @@
   <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
 
   {{ media }}
+  
 
 {% endblock %}
 
@@ -26,9 +27,12 @@
   
   {% if adminform.model_admin.suit_form_tabs %}
     <script type="text/javascript">
+   
+
     (function ($) {
       $(function () {
         $('#suit_form_tabs').suit_form_tabs();
+   
       });
     }(Suit.$))
     </script>
@@ -36,8 +40,11 @@
   
         
   <script>
+  
     (function ($) {
       $(function () {
+      
+      
         $("#{{ opts.module_name }}_form").suit_form_debounce();
         
 		  {% if request.GET.ver %}
@@ -69,6 +76,7 @@
 
 {% block extrastyle %}
   {{ block.super }}
+  
 {% endblock %}
 
 {% block content_title_value %}
@@ -105,7 +113,7 @@
 {% endif %}
 
 {% block content %}
- 
+
   <div id="content-main" class="inner-two-columns">
 
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post"
